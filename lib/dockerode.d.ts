@@ -24,7 +24,7 @@ export interface DockerOptions {
 type ReadableStream = stream.Readable | NodeJS.ReadableStream;
 type WritableStream = stream.Writable | NodeJS.ReadWriteStream;
 
-export default class Docker {
+export class Docker {
   constructor(options?: DockerOptions);
 
   createContainer(options: ContainerCreateOptions, callback: Callback<Container>): void;
