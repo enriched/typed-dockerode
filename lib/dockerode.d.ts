@@ -100,7 +100,7 @@ declare namespace dockerode {
     getEvents(options: {}, callback: Callback<ReadableStream>): void;
     getEvents(callback: Callback<ReadableStream>): void;
 
-    pull(repoTag: string, options: {}, callback: Callback<any>, auth?: {}): Image;
+    pull(repoTag: string, options: any, callback: Callback<ReadableStream>, auth?: {}): Image;
 
     run(image: string, cmd: string[], outputStream: WritableStream, createOptions: {}, startOptions: {}, callback: Callback<any>): events.EventEmitter;
     run(image: string, cmd: string[], outputStream: WritableStream, startOptions: {}, callback: Callback<any>): events.EventEmitter;
@@ -115,7 +115,12 @@ declare namespace dockerode {
 
     swarmUpdate(options: {}, callback: Callback<any>): void;
 
-    modem: any;
+    modem: Modem;
+  }
+
+  export interface Modem {
+    followProgress(strea, onFinished, onProgress);
+    demuxStream(stream, out, err);
   }
 
   export interface Container {
